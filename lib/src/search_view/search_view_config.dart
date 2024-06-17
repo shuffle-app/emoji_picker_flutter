@@ -15,9 +15,17 @@ class SearchViewConfig {
     this.backgroundColor = const Color(0xFFEBEFF2),
     this.buttonColor = Colors.transparent,
     this.buttonIconColor = Colors.black26,
+    this.hintTextColor = Colors.black26,
     this.hintText = 'Search',
+    this.textStyle = const TextStyle(color: Colors.black26),
     this.customSearchView,
   });
+
+  /// Text style of search bar
+  final TextStyle textStyle;
+
+  /// Hint text color of search bar
+  final Color hintTextColor;
 
   /// Background color of search bar
   final Color backgroundColor;
@@ -41,7 +49,8 @@ class SearchViewConfig {
         other.backgroundColor == backgroundColor &&
         other.buttonColor == buttonColor &&
         other.buttonIconColor == buttonIconColor &&
-        other.hintText == hintText;
+        other.hintText == hintText &&
+        other.hintTextColor == hintTextColor;
   }
 
   @override
@@ -49,5 +58,6 @@ class SearchViewConfig {
       backgroundColor.hashCode ^
       buttonColor.hashCode ^
       buttonIconColor.hashCode ^
-      hintText.hashCode;
+      hintText.hashCode ^
+      hintTextColor.hashCode;
 }

@@ -19,8 +19,7 @@ class DefaultSearchViewState extends SearchViewState {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      final emojiSize =
-          widget.config.emojiViewConfig.getEmojiSize(constraints.maxWidth);
+      final emojiSize = widget.config.emojiViewConfig.getEmojiSize(constraints.maxWidth);
       final emojiBoxSize =
           widget.config.emojiViewConfig.getEmojiBoxSize(constraints.maxWidth);
 
@@ -30,6 +29,7 @@ class DefaultSearchViewState extends SearchViewState {
           mainAxisSize: MainAxisSize.min,
           children: [
             Material(
+              color: Colors.transparent,
               child: SizedBox(
                 height: emojiBoxSize + 8.0,
                 child: ListView.builder(
@@ -62,11 +62,14 @@ class DefaultSearchViewState extends SearchViewState {
                   child: TextField(
                     onChanged: onTextInputChanged,
                     focusNode: focusNode,
+                    style: widget.config.searchViewConfig.textStyle,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: widget.config.searchViewConfig.hintText,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16),
+                      hintStyle: TextStyle(
+                        color: widget.config.searchViewConfig.hintTextColor,
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                     ),
                   ),
                 ),
